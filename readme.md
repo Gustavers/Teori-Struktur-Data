@@ -326,6 +326,7 @@ int main() {
 ```
 #### Output :
 ![image](https://github.com/Gustavers/Laporan-Praktikum/assets/162097300/9ba338b0-60cc-4574-803f-4a21e12e0514)
+
 Kode di atas mendefinisikan sebuah struktur `Buku` yang digunakan untuk menyimpan informasi mengenai buku, seperti judul, penulis, dan jumlah halaman. Struktur ini memiliki tiga anggota: `judul`, `penulis`, dan `jumlahHalaman`, masing-masing dengan tipe data yang sesuai untuk menyimpan string dan integer. Di dalam fungsi `main`, sebuah instance dari struktur `Buku` bernama `buku1` dibuat. Kemudian, data untuk `buku1` diisi menggunakan fungsi `strcpy` untuk menyalin string ke anggota `judul` dan `penulis`, dan langsung menetapkan nilai untuk `jumlahHalaman`.
 Setelah data dimasukkan, informasi buku ditampilkan ke layar menggunakan `cout`. Program ini menampilkan judul, penulis, dan jumlah halaman buku secara berurutan. Dengan mengisi dan menampilkan data dari instance `buku1`, program ini mendemonstrasikan penggunaan dasar dari `struct` dalam C++ untuk mengelola dan menampilkan data yang terorganisir. Pada akhir fungsi `main`, program mengembalikan nilai 0 yang menunjukkan bahwa program telah berjalan dan selesai dengan sukses.
 
@@ -490,6 +491,7 @@ int main() {
 ```
 #### Output :
 ![image](https://github.com/Gustavers/Teori-Struktur-Data/assets/162097300/73b96da3-d3f6-44c2-83ef-661ea39422d0)
+
 Kode di atas merupakan implementasi dari struktur data stack dalam bahasa pemrograman C++. Stack digunakan untuk menyimpan data dalam urutan Last-In-First-Out (LIFO), di mana elemen yang terakhir dimasukkan adalah yang pertama dikeluarkan. Implementasi stack dalam kode tersebut menggunakan array untuk menyimpan elemen-elemennya.
 
 Kelas `Stack` memiliki atribut `top` yang merupakan indeks dari elemen teratas dalam stack. Konstruktor kelas `Stack` digunakan untuk menginisialisasi nilai `top` menjadi -1, menandakan bahwa stack awalnya kosong. Kemudian, kelas `Stack` juga memiliki beberapa metode, antara lain:
