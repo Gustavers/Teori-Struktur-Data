@@ -290,4 +290,218 @@ Kode program diatas berfungsi untuk menggabungkan dua array yang sudah diurutkan
 #### Full Code Screenshot :
 ![image](https://github.com/Gustavers/Laporan-Praktikum/assets/162097300/2493fa63-a29c-4972-80c6-20fa8fec91d4)
 
+### 5. Berikan penjelasan dari struct dan buatlah sebuah contoh program dari struct! 
+struct (singkatan dari "structure") adalah tipe data bentukan dalam bahasa pemrograman C dan beberapa bahasa lain, seperti C++. struct memungkinkan kita untuk menggabungkan berbagai tipe data menjadi satu kesatuan. Dengan struct, kita bisa membuat tipe data baru yang lebih kompleks dan merepresentasikan objek dengan berbagai atribut. struct sangat berguna ketika kita ingin menyimpan informasi yang terdiri dari beberapa bagian yang terkait. Misalnya, kita bisa menggunakan struct untuk mendefinisikan sebuah buku yang memiliki judul, penulis, dan jumlah halaman.
+
+#### Kode Program :
+```c++
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+// Definisi struct Buku
+struct Buku {
+    char judul[50];
+    char penulis[50];
+    int jumlahHalaman;
+};
+
+int main() {
+    // Membuat instance dari struct Buku
+    Buku buku1;
+
+    // Mengisi data buku1
+    strcpy(buku1.judul, "Pemrograman C++ untuk Pemula");
+    strcpy(buku1.penulis, "Gustav");
+    buku1.jumlahHalaman = 450;
+
+    // Menampilkan informasi buku
+    cout << "Judul Buku: " << buku1.judul << endl;
+    cout << "Penulis: " << buku1.penulis << endl;
+    cout << "Jumlah Halaman: " << buku1.jumlahHalaman << endl;
+
+    return 0;
+}
+```
+#### Output :
+![image](https://github.com/Gustavers/Laporan-Praktikum/assets/162097300/9ba338b0-60cc-4574-803f-4a21e12e0514)
+Kode di atas mendefinisikan sebuah struktur `Buku` yang digunakan untuk menyimpan informasi mengenai buku, seperti judul, penulis, dan jumlah halaman. Struktur ini memiliki tiga anggota: `judul`, `penulis`, dan `jumlahHalaman`, masing-masing dengan tipe data yang sesuai untuk menyimpan string dan integer. Di dalam fungsi `main`, sebuah instance dari struktur `Buku` bernama `buku1` dibuat. Kemudian, data untuk `buku1` diisi menggunakan fungsi `strcpy` untuk menyalin string ke anggota `judul` dan `penulis`, dan langsung menetapkan nilai untuk `jumlahHalaman`.
+Setelah data dimasukkan, informasi buku ditampilkan ke layar menggunakan `cout`. Program ini menampilkan judul, penulis, dan jumlah halaman buku secara berurutan. Dengan mengisi dan menampilkan data dari instance `buku1`, program ini mendemonstrasikan penggunaan dasar dari `struct` dalam C++ untuk mengelola dan menampilkan data yang terorganisir. Pada akhir fungsi `main`, program mengembalikan nilai 0 yang menunjukkan bahwa program telah berjalan dan selesai dengan sukses.
+
+#### Full Code Screenshot :
+![image](https://github.com/Gustavers/Laporan-Praktikum/assets/162097300/245ad82a-851a-49c6-b827-c3e2cdd2c895)
+
+### 6. Buatlah sebuah program untuk mengecek apakah linked list adalah sebuah palindrom! (50 Poin)
+#### Kode Program :
+```c++
+#include <iostream>
+#include <stack>
+#include <cctype>
+
+using namespace std;
+
+bool isPalindrome(string sentence) {
+    // Menghapus spasi dan karakter non-alphanumeric dari kalimat
+    string cleanSentence = "";
+    for (char c : sentence) {
+        if (isalnum(c)) {
+            cleanSentence += tolower(c);
+        }
+    }
+    
+    // Membuat objek stack
+    stack<char> charStack;
+    
+    // Menambahkan setiap karakter ke dalam stack
+    for (char c : cleanSentence) {
+        charStack.push(c);
+    }
+    
+    // Membuat kalimat terbalik dengan menggunakan stack
+    string reversedSentence = "";
+    while (!charStack.empty()) {
+        reversedSentence += charStack.top();
+        charStack.pop();
+    }
+    
+    // Memeriksa apakah kalimat asli sama dengan kalimat terbalik
+    return cleanSentence == reversedSentence;
+}
+
+int main() {
+    // Input kalimat dari pengguna
+    string kalimat;
+    cout << "Masukkan kalimat : ";
+    getline(cin, kalimat);
+    
+    // Memeriksa apakah kalimat adalah palindrom
+    if (isPalindrome(kalimat)) {
+        cout << "Kalimat tersebut adalah palindrom." << endl;
+    } else {
+        cout << "Kalimat tersebut bukan palindrom." << endl;
+    }
+    
+    return 0;
+}
+```
+#### Output :
+![image](https://github.com/Gustavers/Teori-Struktur-Data/assets/162097300/87b5ddf3-4e79-4bc7-a93b-22dbbcc7d24d)
+
+Kode di atas mendefinisikan fungsi `isPalindrome` yang memeriksa apakah sebuah kalimat adalah palindrom. Fungsi ini pertama-tama membersihkan kalimat dengan menghapus spasi dan karakter non-alfanumerik, serta mengonversi semua huruf menjadi huruf kecil menggunakan loop `for` dan fungsi `isalnum` serta `tolower`. Hasilnya disimpan dalam variabel `cleanSentence`. Kemudian, setiap karakter dari `cleanSentence` dimasukkan ke dalam stack `charStack`. Dengan menggunakan stack, urutan karakter dapat dibalik dengan mudah.
+
+Setelah semua karakter dari `cleanSentence` dimasukkan ke dalam stack, sebuah string baru `reversedSentence` dibuat dengan mengambil karakter satu per satu dari stack sampai stack kosong. Ini menghasilkan versi terbalik dari `cleanSentence`. Fungsi `isPalindrome` kemudian membandingkan `cleanSentence` dengan `reversedSentence` untuk menentukan apakah kalimat tersebut adalah palindrom. Fungsi `main` meminta input kalimat dari pengguna dan menggunakan fungsi `isPalindrome` untuk memeriksa apakah kalimat tersebut adalah palindrom, lalu mencetak hasilnya ke layar. Dengan demikian, program ini memberikan cara sederhana untuk memeriksa apakah sebuah kalimat adalah palindrom, mengabaikan spasi dan tanda baca, serta tidak membedakan huruf besar dan kecil.
+
+#### Full Code Screenshot :
+![image](https://github.com/Gustavers/Teori-Struktur-Data/assets/162097300/8bc6f8bd-ee03-4af4-a3e8-c811a2d9107e)
+
+
+### 7. Tulislah sebuah program dari operasi stack seperti pop, push, isEmpty, isFull, dll(min 5)! (60 Poin)
+#### Kode Program :
+```c++
+#include <iostream>
+using namespace std;
+
+#define MAX 1000 // Mendefinisikan kapasitas maksimum stack
+
+class Stack {
+    int top;
+
+public:
+    int a[MAX]; // Array untuk menyimpan elemen stack
+
+    Stack() { top = -1; } // Konstruktor untuk menginisialisasi top
+
+    bool push(int x);
+    int pop();
+    int peek();
+    bool isEmpty();
+    bool isFull();
+    int size();
+};
+
+// Fungsi untuk menambahkan elemen ke stack
+bool Stack::push(int x) {
+    if (isFull()) {
+        cout << "Stack overflow" << endl;
+        return false;
+    } else {
+        a[++top] = x;
+        cout << x << " pushed into stack" << endl;
+        return true;
+    }
+}
+
+// Fungsi untuk menghapus elemen dari stack
+int Stack::pop() {
+    if (isEmpty()) {
+        cout << "Stack underflow" << endl;
+        return -1;
+    } else {
+        int x = a[top--];
+        return x;
+    }
+}
+
+// Fungsi untuk mengembalikan elemen teratas dari stack tanpa menghapusnya
+int Stack::peek() {
+    if (isEmpty()) {
+        cout << "Stack is empty" << endl;
+        return -1;
+    } else {
+        return a[top];
+    }
+}
+
+// Fungsi untuk memeriksa apakah stack kosong
+bool Stack::isEmpty() {
+    return (top < 0);
+}
+
+// Fungsi untuk memeriksa apakah stack penuh
+bool Stack::isFull() {
+    return (top >= MAX - 1);
+}
+
+// Fungsi untuk mengembalikan ukuran stack
+int Stack::size() {
+    return (top + 1);
+}
+
+// Fungsi utama
+int main() {
+    Stack stack;
+
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+
+    cout << "Top element is " << stack.peek() << endl;
+    cout << "Stack size is " << stack.size() << endl;
+
+    cout << stack.pop() << " popped from stack" << endl;
+
+    cout << "Is stack empty? " << (stack.isEmpty() ? "Yes" : "No") << endl;
+    cout << "Is stack full? " << (stack.isFull() ? "Yes" : "No") << endl;
+
+    return 0;
+}
+
+```
+#### Output :
+![image](https://github.com/Gustavers/Teori-Struktur-Data/assets/162097300/73b96da3-d3f6-44c2-83ef-661ea39422d0)
+Kode di atas merupakan implementasi dari struktur data stack dalam bahasa pemrograman C++. Stack digunakan untuk menyimpan data dalam urutan Last-In-First-Out (LIFO), di mana elemen yang terakhir dimasukkan adalah yang pertama dikeluarkan. Implementasi stack dalam kode tersebut menggunakan array untuk menyimpan elemen-elemennya.
+
+Kelas `Stack` memiliki atribut `top` yang merupakan indeks dari elemen teratas dalam stack. Konstruktor kelas `Stack` digunakan untuk menginisialisasi nilai `top` menjadi -1, menandakan bahwa stack awalnya kosong. Kemudian, kelas `Stack` juga memiliki beberapa metode, antara lain:
+- `push(int x)`: Menambahkan elemen baru `x` ke dalam stack. Fungsi ini memeriksa apakah stack penuh sebelum menambahkan elemen baru. Jika stack penuh, maka akan mencetak pesan "Stack overflow". Jika tidak, elemen baru tersebut akan ditambahkan ke dalam stack.
+- `pop()`: Menghapus dan mengembalikan elemen teratas dari stack. Fungsi ini memeriksa apakah stack kosong sebelum menghapus elemen. Jika stack kosong, maka akan mencetak pesan "Stack underflow". Jika tidak, elemen teratas akan dihapus dan nilainya dikembalikan.
+- `peek()`: Mengembalikan nilai dari elemen teratas stack tanpa menghapusnya. Fungsi ini memeriksa apakah stack kosong sebelum mengakses elemen teratas.
+- `isEmpty()`: Memeriksa apakah stack kosong dengan cara mengecek apakah nilai `top` kurang dari 0.
+- `isFull()`: Memeriksa apakah stack penuh dengan cara mengecek apakah nilai `top` sama dengan atau lebih besar dari `MAX - 1`.
+- `size()`: Mengembalikan jumlah elemen dalam stack dengan cara mengembalikan nilai `top + 1`. 
+
+Dalam fungsi `main`, sebuah objek dari kelas `Stack` dibuat. Kemudian, beberapa operasi dasar stack dilakukan, seperti menambahkan elemen baru, menghapus elemen teratas, dan memeriksa apakah stack kosong atau penuh. Hasil dari operasi-operasi tersebut kemudian ditampilkan ke layar sebagai output program.
+
+#### Full Code Screenshot :
+![image](https://github.com/Gustavers/Teori-Struktur-Data/assets/162097300/034dbdcd-c95b-4492-932b-844cd831ccd7)
 
